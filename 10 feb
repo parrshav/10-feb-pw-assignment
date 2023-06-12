@@ -1,0 +1,73 @@
+OOPs assignmentAssignment Questions 
+Assignment 
+Q1. Which function is used to open a file? What are the different modes of opening a file? Explain each mode  of file opening. 
+In Python, the open() function is used to open a file. It takes a filename as a parameter and returns a file object that allows you to perform various operations on the file.
+The open() function accepts two arguments: the filename and the mode. The mode parameter specifies the purpose and permissions of opening the file. Here are the different modes of opening a file
+'r': This is the default mode and stands for "read." It opens the file for reading.
+'w': This mode stands for "write." It opens the file for writing. If the file exists
+'a': This mode stands for "append." It opens the file for appending data to the end. If the file doesn't exist
+'x': This mode stands for "exclusive creation." It opens the file for writing, but only if it doesn't already exist.
+'b': This mode stands for "binary." It opens the file in binary mode, allowing you to read or write binary data.
+'t': This mode stands for "text." It opens the file in text mode, which is the default mode. 
+file = open('example.txt', 'r')
+
+
+Q2. Why close() function is used? Why is it important to close a file? 
+The close() function in Python is used to close a file that was previously opened using the open() function. It is important to close a file after you have finished working with it for several reasons
+Resource Management: When a file is opened, the operating system allocates resources (such as memory) to handle the file operations. If you don't close the file, those resources might not be released immediately, leading to inefficient resource usage.
+Data Integrity: Closing a file ensures that any pending data that has been buffered or cached in memory is written to the file. If you don't close the file, the data might remain in the buffer without being written, causing potential data loss or inconsistency.
+Avoiding Resource Exhaustion: There is a limit to the number of files that can be opened simultaneously by a process. If you keep opening files without closing them, you might reach this limit, resulting in an error when trying to open additional files.
+Other Processes: In some cases, not closing a file may prevent other processes or applications from accessing or modifying the file until the file is closed. Closing the file allows other processes to interact with it.
+
+
+
+Q3. Write a python program to create a text file. Write ‘I want to become a Data Scientist’ in that file. Then  close the file. Open this file and read the content of the file.   
+# Create a text file and write content into it
+file_name = "data_scientist.txt"
+content = "I want to become a Data Scientist"
+
+# Open the file in write mode
+with open(file_name, 'w') as file:
+    # Write the content into the file
+    file.write(content)
+
+# Open the file in read mode
+with open(file_name, 'r') as file:
+    # Read the content of the file
+    file_content = file.read()
+
+# Print the content
+print("Content of the file:")
+print(file_content)
+
+
+Q4. Explain the following with python code: read(), readline() and readlines(). 
+read(): This method reads the entire content of a file as a single string.
+readline(): This method reads a single line from a file.
+readlines(): This method reads all lines from a file and returns them as a list of strings.
+
+
+Q5. Explain why with statement is used with open(). What is the advantage of using with statement and  open() together? 
+The with statement is used with the open() function in Python to ensure that the file is properly closed after being accessed. It is a context manager that automatically takes care of opening and closing the file, even if an exception occurs within the block of code.
+The advantage of using the with statement with open() is that it guarantees the proper handling of the file, including closing it, regardless of whether an exception occurs or not. Here are a few key advantages:
+Automatic resource management: When the code block within the with statement finishes executing, the file object is automatically closed. This ensures that system resources associated with the file, such as memory, are properly released. It saves you from explicitly calling the close() method, which can be easily overlooked and lead to resource leaks if not properly handled.
+Exception handling: If an exception occurs within the with block, the file is still closed before propagating the exception. This helps prevent file corruption or data loss that could occur if the file remains open after an exception. It ensures that any necessary cleanup operations are performed, even in the presence of errors.
+Cleaner and more readable code: The with statement simplifies the code by encapsulating the setup and teardown actions within a single block. It clearly indicates the scope in which the file is being used and makes the code more readable and concise.
+
+Q6. Explain the write() and writelines() functions. Give a suitable example. 
+write(): This function is used to write a single string or a sequence of characters to a file.
+# Open the file in write mode
+with open('file.txt', 'w') as file:
+    file.write("Hello, World!\n")
+    file.write("This is an example of the write() function.\n")
+writelines(): This function is used to write a list of strings to a file. Each string is written as a separate line.
+# List of lines to write to the file
+lines = ["Line 1", "Line 2", "Line 3"]
+
+# Open the file in write mode
+with open('file.txt', 'w') as file:
+    file.writelines(lines)
+
+
+Note: Create your assignment in Jupyter notebook and upload it to GitHub & share that GitHub repository   link through your dashboard. Make sure the repository is public. 
+Data Science Masters
